@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unfollowers for Bluesky</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://docs.bsky.app/img/favicon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <h1>Unfollowers for Bluesky</h1>
+        <p>© 2024 Feito por Caique Silva</p>
+        <p>
+            <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" style="text-decoration: none;">
+              <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;">
+            </a>
+            <a href="https://github.com/scaique" style="text-decoration: none;">
+              <img src="https://skillicons.dev/icons?i=github" style="width:22px;">
+            </a>
+            <a href="https://indiebluegames.blogspot.com/" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;">
+            </a>
+            <a href="https://scaique.github.io/" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.freepik.com/256/1006/1006771.png?semt=ais_hybrid" style="width:22px;">
+            </a>
+          </p>
+    </header>
+    <div class="container">
+        <div>
+            <input type="text" id="user" placeholder="Insira seu usuário completo." required>
+        </div>
+        <div>
+            <button type="submit" onclick="notFollowingBack(document.getElementById('user').value)">Buscar Não Seguidores</button>
+        </div>
+    </div>
+    <div class="users-container">
+        <p id="user-txt" >USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA:</p>
+        <div id="users"></div>
+    </div>
+
+    <div id="mensagem" style="display: none">
+      <div id="carregando">
+        <span>Carregando...</span>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
