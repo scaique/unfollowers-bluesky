@@ -95,7 +95,7 @@ function mostrarUnfollowers(dados) {
         document.getElementById("total").innerHTML = dados.length;
         dados.forEach(user => {
             html += `
-            <a href="https://bsky.app/profile/${user.handle}" style="text-decoration: none">
+            <a href="https://bsky.app/profile/${user.handle}" target="_blank" style="text-decoration: none">
                 <div class="user-info">
                     <div>
                         <img src="${user.avatar}" width="50" height="50">
@@ -113,15 +113,21 @@ function mostrarUnfollowers(dados) {
     document.getElementById("users").innerHTML = html;
 }
 
-function caregando(valor) {
+function carregando(valor) {
     const msg = document.getElementById("mensagem");
     msg.style.display = valor ? "flex" : "none";
     return valor === "";
 }
 
-async function notFollowingBack(handle) {
-    if (caregando(handle)) return;
-    
+async function notFollowingBack(event) {
+    event.preventDefault();
+    const form = document.getElementsByTagName("form")[0];
+    const formData = new FormData(form);
+    let handle = formData.get("handle")
+    if (!handle.includes(".bsky.social") && !handle.includes(".")) {
+        handle += ".bsky.social";
+    }
+    if (carregando(handle)) return;
     const data = await findUnfollowers(handle);
     mostrarUnfollowers(data.unfollowers);
     document.getElementById("mensagem").style.display = "none";

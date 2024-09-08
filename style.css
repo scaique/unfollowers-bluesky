@@ -1,11 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 20px;
 }
 
 header {
@@ -26,7 +31,8 @@ header p {
 }
 
 .container, .users-container {
-    width: 300px;
+    width: 100%;
+    max-width: 600px;
     background-color: white;
     padding: 20px;
     border-radius: 8px;

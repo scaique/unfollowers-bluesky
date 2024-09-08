@@ -13,31 +13,31 @@
         <p>© 2024 Feito por Caique Silva</p>
         <p>
             <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" style="text-decoration: none;">
-              <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;">
+              <img src="https://skillicons.dev/icons?i=linkedin" alt="Linkedin" style="width:22px;">
             </a>
             <a href="https://github.com/scaique" style="text-decoration: none;">
-              <img src="https://skillicons.dev/icons?i=github" style="width:22px;">
+              <img src="https://skillicons.dev/icons?i=github" alt="Github" style="width:22px;">
             </a>
             <a href="https://indiebluegames.blogspot.com/" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;">
+              <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" alt="Blue Games" style="width:22px;">
             </a>
             <a href="https://scaique.github.io/" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;">
+              <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" alt="Website" style="width:22px;">
             </a>
           </p>
     </header>
-    <div class="container">
+    <form class="container" onsubmit="notFollowingBack(event)">
         <div>
-            <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
-            <select id="user-select">
-              <option value="" disabled selected>Selecione seu usuário</option>
-            </select>
-          </div>
-          <div>
-            <button type="submit" onclick="buscarUsers()">Buscar seu usuário</button>
-            <button type="submit" onclick="notFollowingBack(document.getElementById('user-select').value)">Buscar Não Seguidores</button>
+          <input type="text" name="handle" id="user" placeholder="Insira seu nome de usuário." required>
+          <select id="user-select">
+            <option value="" disabled selected>Selecione seu usuário</option>
+          </select>
         </div>
-    </div>
+        <div>
+          <button type="button" onclick="buscarUsers()">Buscar seu usuário</button>
+          <button type="submit">Buscar Não Seguidores</button>
+        </div>
+    </form>
     <div class="users-container">
         <p id="user-txt" >USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: <span id="total">0</span></p>
         <div id="users"></div>
