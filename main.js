@@ -1,5 +1,64 @@
 let cursorFollowers = null;
 let cursorFollows = null;
+let cursor = null;
+
+function salvarLocalStorage(chave, informacao) {
+    localStorage.setItem(chave, JSON.stringify(informacao));
+}
+
+function recuperarLocalStorage(chave) {
+    const dados = localStorage.getItem(chave);
+    return dados ? JSON.parse(dados) : null;
+}
+
+function salvarUser(handle) {
+    let users = recuperarLocalStorage("users") ?? [];
+    if (!users.includes(handle)) {
+        users.push(handle);
+    }
+
+    salvarLocalStorage("users", users);
+}
+
+const select = document.getElementById("user-select");
+const salvo = recuperarLocalStorage("users");
+
+salvo.forEach(handle => {
+    const option = document.createElement('option');
+    option.value = handle;
+    option.textContent = handle;
+    select.appendChild(option);
+});
+
+function mostrarUnfollowers(dados) {
+    let html = "";
+    if (dados && dados.length > 0) {
+        document.getElementById("total").innerHTML = dados.length;
+        dados.forEach(user => {
+            html += `
+            <a target="_blank" href="https://bsky.app/profile/${user.handle}" style="text-decoration: none">
+                <div class="user-info">
+                    <div>
+                        <img src="${user.avatar}" width="50" height="50">
+                    </div>
+                    <div>
+                        ${user.displayName || "Sem nome de perfil"} <br>
+                        @${user.handle || "Sem nome de usuário"}
+                    </div>
+                </div>
+            </a>`;
+        });
+    } else {
+        html = "<p>Sem Dados.</p>";
+    }
+    document.getElementById("users").innerHTML = html;
+}
+
+function carregando(valor) {
+    const msg = document.getElementById("mensagem");
+    msg.style.display = valor ? "flex" : "none";
+    return valor === "";
+}
 
 async function getFollowers(user) {
     try {
@@ -89,49 +148,19 @@ async function findUnfollowers(handle) {
     return { unfollowers: [] };
 }
 
-function mostrarUnfollowers(dados) {
-    let html = "";
-    if (dados && dados.length > 0) {
-        document.getElementById("total").innerHTML = dados.length;
-        dados.forEach(user => {
-            html += `
-            <a href="https://bsky.app/profile/${user.handle}" style="text-decoration: none">
-                <div class="user-info">
-                    <div>
-                        <img src="${user.avatar}" width="50" height="50">
-                    </div>
-                    <div>
-                        ${user.displayName || "Sem nome de perfil"} <br>
-                        @${user.handle || "Sem nome de usuário"}
-                    </div>
-                </div>
-            </a>`;
-        });
-    } else {
-        html = "<p>Sem Dados.</p>";
-    }
-    document.getElementById("users").innerHTML = html;
-}
-
-function caregando(valor) {
-    const msg = document.getElementById("mensagem");
-    msg.style.display = valor ? "flex" : "none";
-    return valor === "";
-}
-
 async function notFollowingBack(handle) {
-    if (caregando(handle)) return;
+    if (carregando(handle)) return;
     
     const data = await findUnfollowers(handle);
     mostrarUnfollowers(data.unfollowers);
     document.getElementById("mensagem").style.display = "none";
+
+    salvarUser(document.getElementById("user-select").value)
 }
 
 async function buscarUsers() {
     const query = document.getElementById("user").value;
     const select = document.getElementById("user-select");
-
-    select.innerHTML = '<option value="" disabled selected>Selecione seu usuário</option>';
 
     if (!query) {
         alert("Por favor, insira um nome de usuário.");
