@@ -44,7 +44,7 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-button {
+.busca-btn {
     width: 49%;
     padding: 10px 1px;
     background-color: #007bff;
@@ -56,13 +56,29 @@ button {
     font-size: 75%;
 }
 
+.busca-btn:hover {
+    background-color: #0056b3;
+}
+
+.limpar-btn {
+    width: 100%;
+    padding: 5px 1px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 75%;
+}
+
+.limpar-btn:hover {
+    background-color: #a82334;
+}
+
 .container div:last-child {
     display: flex;
     justify-content: space-between;
-}
-
-button:hover {
-    background-color: #0056b3;
 }
 
 .user-info {

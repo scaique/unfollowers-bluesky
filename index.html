@@ -35,8 +35,11 @@
             <span style="font-size: 80%; color: rgb(152, 152, 152);">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
           </div>
           <div>
-            <button type="submit" onclick="buscarUsers()">Buscar seu usuário</button>
-            <button type="submit" onclick="notFollowingBack(document.getElementById('user-select').value)">Buscar Não Seguidores</button>
+            <button class="busca-btn" type="submit" onclick="buscarUsers()">Buscar Seu Usuário</button>
+            <button class="busca-btn" type="submit" onclick="notFollowingBack(document.getElementById('user-select').value)">Buscar Não Seguidores</button>
+        </div>
+        <div>
+          <button class="limpar-btn" type="submit" onclick="apagarLocalStorage()">Limpar Lista de Usuários</button>
         </div>
     </div>
     <div class="users-container">

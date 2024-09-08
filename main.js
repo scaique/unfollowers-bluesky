@@ -11,6 +11,11 @@ function recuperarLocalStorage(chave) {
     return dados ? JSON.parse(dados) : null;
 }
 
+function apagarLocalStorage() {
+    localStorage.clear();
+    location.reload();
+}
+
 function salvarUser(handle) {
     let users = recuperarLocalStorage("users") ?? [];
     if (!users.includes(handle)) {
