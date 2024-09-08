@@ -2,35 +2,35 @@ let cursorFollowers = null;
 let cursorFollows = null;
 
 async function getFollowers(user) {
-    try {        
-        let proximaPagina = true;
+    try {
+        let proxima = true;
         let data = [];
         
-        while (proximaPagina) {
+        while (proxima) {
             let url = `https://public.api.bsky.app/xrpc/app.bsky.graph.getFollowers?actor=${user}&limit=100`;
             if (cursorFollowers) {
                 url += `&cursor=${cursorFollowers}`;
             }
-
+            
             let dadosRecebidos = await fetch(url);
-
+            
             if (!dadosRecebidos.ok) {
                 console.error("Erro ao recuperar seguidores.");
                 break;
             }
-
+            
             let dados = await dadosRecebidos.json();
             data.push(dados);
-
+            
             cursorFollowers = dados.cursor;
-            proximaPagina = cursorFollowers != null;
+            proxima = cursorFollowers != null;
         }
-
+        
         let followers = [];
         data.forEach(set => {
             followers = followers.concat(set.followers);
         });
-
+        
         return followers;
     } catch (erro) {
         console.error("Erro ao recuperar seguidores:", erro);
@@ -39,11 +39,11 @@ async function getFollowers(user) {
 }
 
 async function getFollows(user) {
-    try {        
-        let proximaPagina = true;
+    try {
+        let proxima = true;
         let data = [];
         
-        while (proximaPagina) {
+        while (proxima) {
             let url = `https://public.api.bsky.app/xrpc/app.bsky.graph.getFollows?actor=${user}&limit=100`;
             if (cursorFollows) {
                 url += `&cursor=${cursorFollows}`;
@@ -60,7 +60,7 @@ async function getFollows(user) {
             data.push(dados);
 
             cursorFollows = dados.cursor;
-            proximaPagina = cursorFollows != null;
+            proxima = cursorFollows != null;
         }
 
         let follows = [];
@@ -92,6 +92,7 @@ async function findUnfollowers(handle) {
 function mostrarUnfollowers(dados) {
     let html = "";
     if (dados && dados.length > 0) {
+        document.getElementById("total").innerHTML = dados.length;
         dados.forEach(user => {
             html += `
             <a href="https://bsky.app/profile/${user.handle}" style="text-decoration: none">
@@ -107,7 +108,7 @@ function mostrarUnfollowers(dados) {
             </a>`;
         });
     } else {
-        html = "<p>Nenhum unfollower encontrado.</p>";
+        html = "<p>Sem Dados.</p>";
     }
     document.getElementById("users").innerHTML = html;
 }
