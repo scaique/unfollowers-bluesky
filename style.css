@@ -154,3 +154,13 @@ input[type="text"] {
     border-color: #007BFF;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+.links {
+    display: flex;
+    justify-content: center;
+}
+
+.links a {
+    text-decoration: none;
+    padding: 5px;
+}
