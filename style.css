@@ -38,20 +38,27 @@ header p {
 input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
+    width: 49%;
+    padding: 10px 1px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 15px;
+    font-size: 75%;
+}
+
+.container div:last-child {
+    display: flex;
+    justify-content: space-between;
 }
 
 button:hover {
@@ -100,6 +107,34 @@ button:hover {
 
 #user-txt {
     font-size: 75%;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
+}
+
+#user-select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    color: #333;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#user-select option {
+    padding: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+#user-select option:checked {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+#user-select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

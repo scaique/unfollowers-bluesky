@@ -126,3 +126,39 @@ async function notFollowingBack(handle) {
     mostrarUnfollowers(data.unfollowers);
     document.getElementById("mensagem").style.display = "none";
 }
+
+async function buscarUsers() {
+    const query = document.getElementById("user").value;
+    const select = document.getElementById("user-select");
+
+    select.innerHTML = '<option value="" disabled selected>Selecione seu usuário</option>';
+
+    if (!query) {
+        alert("Por favor, insira um nome de usuário.");
+        return;
+    }
+
+    try {
+        const retorno = await fetch(`https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=${query}`);
+
+        if (!retorno.ok) {
+            throw new Error("Erro ao buscar usuários");
+        }
+
+        const data = await retorno.json();
+
+        if (data.actors.length === 0) {
+            alert("Nenhum usuário encontrado.");
+            return;
+        }
+
+        data.actors.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user.handle;
+            option.textContent = user.handle;
+            select.appendChild(option);
+        });
+    } catch (erro) {
+        alert(`Erro: ${erro.message}`);
+    }
+}
