@@ -12,7 +12,7 @@ function recuperarLocalStorage(chave) {
 }
 
 function apagarLocalStorage() {
-    localStorage.clear();
+    localStorage.removeItem("users");
     location.reload();
 }
 
@@ -28,12 +28,14 @@ function salvarUser(handle) {
 const select = document.getElementById("user-select");
 const salvo = recuperarLocalStorage("users");
 
-salvo.forEach(handle => {
-    const option = document.createElement('option');
-    option.value = handle;
-    option.textContent = handle;
-    select.appendChild(option);
-});
+if (salvo) {
+    salvo.forEach(handle => {
+        const option = document.createElement('option');
+        option.value = handle;
+        option.textContent = handle;
+        select.appendChild(option);
+    });
+}
 
 function mostrarUnfollowers(dados) {
     let html = "";

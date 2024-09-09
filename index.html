@@ -8,52 +8,53 @@
     <link rel="icon" href="https://docs.bsky.app/img/favicon.png" type="image/png">
 </head>
 <body>
-    <header>
-        <h1>Unfollowers for Bluesky</h1>
-        <p>© 2024 Feito por Caique Silva</p>
-        <div class="links">
-            <a href="https://www.linkedin.com/in/sergio-caique-da-silva/">
-              <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;" alt="Linkedin">
-            </a>
-            <a href="https://github.com/scaique">
-              <img src="https://skillicons.dev/icons?i=github" style="width:22px;" alt="Github">
-            </a>
-            <a href="https://indiebluegames.blogspot.com/">
-              <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;" alt="Blog">
-            </a>
-            <a href="https://scaique.github.io/">
-              <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;" alt="Portfolio">
-            </a>
-          </div>
-    </header>
-    <div class="container">
-        <div>
-            <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
-            <select id="user-select">
-              <option selected disabled>Selecione seu usuário</option>
-            </select>
-            <span style="font-size: 80%; color: rgb(152, 152, 152);">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
-          </div>
-          <div>
-            <button class="busca-btn" type="submit" onclick="buscarUsers()">Buscar Seu Usuário</button>
-            <button class="busca-btn" type="submit" onclick="notFollowingBack(document.getElementById('user-select').value)">Buscar Não Seguidores</button>
-        </div>
-        <div>
-          <button class="limpar-btn" type="submit" onclick="apagarLocalStorage()">Limpar Lista de Usuários</button>
-        </div>
-    </div>
-    <div class="users-container">
-        <p id="user-txt" >USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: <span id="total">0</span></p>
-        <div id="users"></div>
-    </div>
-
-    <div id="mensagem" style="display: none;">
-      <div id="carregando">
-        <span>Carregando...</span> <br>
-        <span style="font-size: 65%; color: rgb(152, 152, 152);">Isso pode levar um tempo</span>
+  <header>
+    <h1>Unfollowers for Bluesky</h1>
+    <p id="feitoPor">© 2024 Feito por Caique Silva</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/">
+        <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;" alt="Linkedin">
+      </a>
+      <a href="https://github.com/scaique">
+        <img src="https://skillicons.dev/icons?i=github" style="width:22px;" alt="Github">
+      </a>
+      <a href="https://indiebluegames.blogspot.com/">
+        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;" alt="Blog">
+      </a>
+      <a href="https://scaique.github.io/">
+        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;" alt="Portfolio">
+      </a>
       </div>
+  </header>
+  <div class="container">
+    <div>
+      <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
+      <select id="user-select">
+        <option selected disabled>Selecione seu usuário</option>
+      </select>
+      <span id="texto" style="font-size: 80%; color: rgb(152, 152, 152);">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
     </div>
+    <div>
+      <button id="buscarUser" class="busca-btn" onclick="buscarUsers()">Buscar Seu Usuário</button>
+      <button id="buscarUnf" class="busca-btn" onclick="notFollowingBack(document.getElementById('user-select').value)">Buscar Não Seguidores</button>
+    </div>
+    <div>
+      <button id="limpar" class="limpar-btn" onclick="apagarLocalStorage()">Limpar Lista de Usuários</button>
+    </div>
+  </div>
+  <div class="users-container">
+    <div id="user-txt">
+      <span id="usersTxt">USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: </span><span id="total">0</span>
+    </div>
+    <div id="users"></div>
+  </div>
 
-    <script src="main.js"></script>
+  <div id="mensagem" style="display: none;">
+    <div id="carregando">
+      <span id="avisoCarregando">Carregando...</span> <br>
+      <span id="msgCarregando" style="font-size: 65%; color: rgb(152, 152, 152);">Isso pode levar um tempo</span>
+    </div>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
