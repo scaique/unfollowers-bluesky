@@ -1,6 +1,20 @@
+const select = document.getElementById("user-select");
+const botaoUser = document.getElementById("buscarUser");
+const botaoUnf = document.getElementById("buscarUnf");
+const salvo = recuperarLocalStorage("users");
 let cursorFollowers = null;
 let cursorFollows = null;
-let cursor = null;
+
+select.addEventListener("change", function() {
+    if (select.value === "selecione") {
+        botaoUser.style.width = "100%";
+        botaoUnf.style.display = "none";
+    } else {
+        botaoUser.style.width = "49%";
+        botaoUnf.style.width = "49%";
+        botaoUnf.style.display = "inline-block";
+    }
+});
 
 function salvarLocalStorage(chave, informacao) {
     localStorage.setItem(chave, JSON.stringify(informacao));
@@ -24,9 +38,6 @@ function salvarUser(handle) {
 
     salvarLocalStorage("users", users);
 }
-
-const select = document.getElementById("user-select");
-const salvo = recuperarLocalStorage("users");
 
 if (salvo) {
     salvo.forEach(handle => {
@@ -155,7 +166,14 @@ async function findUnfollowers(handle) {
     return { unfollowers: [] };
 }
 
-async function notFollowingBack(handle) {
+async function notFollowingBack() {
+    const handle = document.getElementById("user-select").value;
+
+    if (handle === "selecione") {
+        alert("Por favor, selecione um usuário.");
+        return;
+    }
+
     if (carregando(handle)) return;
     
     const data = await findUnfollowers(handle);
@@ -170,7 +188,7 @@ async function buscarUsers() {
     const select = document.getElementById("user-select");
 
     if (!query) {
-        alert("Por favor, insira um nome de usuário.");
+        alert("Por favor, insira um nome de usuário para realizar a busca.");
         return;
     }
 
