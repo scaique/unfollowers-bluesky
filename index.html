@@ -30,16 +30,16 @@
     <div>
       <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
       <select id="user-select" required>
-        <option value="selecione" selected disabled>Selecione seu usuário</option>
+        <option value="" selected disabled>Selecione seu usuário</option>
       </select>
       <span id="texto" style="font-size: 80%; color: rgb(152, 152, 152);">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
     </div>
-    <div id="botoes">
-      <button style="width: 100%;" id="buscarUser" class="busca-btn" onclick="buscarUsers()">Buscar Seu Usuário</button>
-      <button style="width: 49%; display: none;" id="buscarUnf" class="busca-btn" onclick="notFollowingBack()">Buscar Não Seguidores</button>
+    <div>
+      <button style="width: 100%;" id="buscarUser" class="busca-btn" onclick="buscarUsers()">Buscar seu usuário</button>
+      <button style="width: 49%; display: none;" id="buscarUnf" class="busca-btn" onclick="notFollowingBack()">Buscar não seguidores</button>
     </div>
     <div>
-      <button id="limpar" class="limpar-btn" onclick="apagarLocalStorage()">Limpar Lista de Usuários</button>
+      <button id="limpar" class="limpar-btn" onclick="apagarLocalStorage()">Limpar lista de usuários</button>
     </div>
   </div>
   <div class="users-container">

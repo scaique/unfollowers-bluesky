@@ -6,7 +6,7 @@ let cursorFollowers = null;
 let cursorFollows = null;
 
 select.addEventListener("change", function() {
-    if (select.value === "selecione") {
+    if (select.value === "") {
         botaoUser.style.width = "100%";
         botaoUnf.style.display = "none";
     } else {
@@ -214,5 +214,6 @@ async function buscarUsers() {
         });
     } catch (erro) {
         alert(`Erro: ${erro.message}`);
+
     }
 }
