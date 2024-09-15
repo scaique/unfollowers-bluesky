@@ -72,6 +72,7 @@ input[type="text"] {
     margin-top: 5px;
     font-size: 75%;
     text-decoration: none;
+    transition: background-color 0.5s;
 }
 
 .conheca-btn img {
@@ -92,6 +93,7 @@ input[type="text"] {
     cursor: pointer;
     margin-top: 15px;
     font-size: 75%;
+    transition: background-color 0.5s;
 }
 
 .busca-btn:hover {
@@ -108,6 +110,7 @@ input[type="text"] {
     cursor: pointer;
     margin-top: 10px;
     font-size: 75%;
+    transition: background-color 0.5s;
 }
 
 .limpar-btn:hover {
@@ -170,6 +173,7 @@ input[type="text"] {
     cursor: pointer;
     margin-top: 2px;
     margin-bottom: 2px;
+    transition: background-color 0.5s;
 }
 
 #user-select option {
@@ -205,4 +209,23 @@ input[type="text"] {
 
 .links a img:hover {
     filter: grayscale(0%);
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s;
+}
+
+.fixed-button:hover {
+    background-color: #0056b3;
 }
