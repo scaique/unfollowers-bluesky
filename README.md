@@ -12,5 +12,5 @@ Unfollowers for Bluesky é uma ferramenta web fácil de usar que permite verific
 1. Pesquisa do usuário: O usuário começa inserindo o nome de um perfil da Bluesky na barra de pesquisa.
 2. Seleção do perfil: A aplicação apresenta uma lista de sugestões com base na pesquisa. O usuário seleciona o perfil desejado para continuar.
 3. Processamento dos dados: Após a seleção, a aplicação faz uma consulta à API da rede social Bluesky. A API retorna os dados de seguidores e seguidos do perfil escolhido, e a aplicação compara essas listas para identificar os usuários que não seguem de volta.
-4. Exibição dos resultados: A lista de "unfollowers" é exibida de forma clara, permitindo ao usuário visualizar os perfis que não estão retribuindo o follow.
+4. Exibição dos resultados: A lista de "unfollowers" é exibida de forma clara, permitindo ao usuário visualizar os perfis que não estão retribuindo o follow. Cada perfil exibido é acompanhado de um link direto para sua página no site ou aplicativo da Bluesky, facilitando o acesso rápido ao perfil desejado.
 5. Limpar a pesquisa: Ao final, o usuário pode optar por limpar a lista de resultados e realizar uma nova busca, mantendo o fluxo de navegação simples e eficiente.
