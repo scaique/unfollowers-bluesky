@@ -8,25 +8,12 @@
     <link rel="icon" href="https://docs.bsky.app/img/favicon.png" type="image/png">
 </head>
 <body>
-  <header>
-    <h1>Unfollowers for Bluesky</h1>
-    <p id="feitoPor">© 2024 Feito por Caique Silva</p>
-    <div class="links">
-      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/">
-        <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;" alt="Linkedin">
-      </a>
-      <a href="https://github.com/scaique">
-        <img src="https://skillicons.dev/icons?i=github" style="width:22px;" alt="Github">
-      </a>
-      <a href="https://indiebluegames.blogspot.com/">
-        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;" alt="Blog">
-      </a>
-      <a href="https://scaique.github.io/">
-        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;" alt="Portfolio">
-      </a>
-      </div>
-  </header>
   <div class="container">
+    <p class="conheca">Conheça também:</p>
+    <a class="conheca-btn" target="_blank" href = 'https://bit.ly/video-bsky';><img src="https://docs.bsky.app/img/favicon.png" alt="Bluesky">Video Downloader for Bluesky</a>
+  </div>
+  <div class="container">
+    <h1>Unfollowers for Bluesky</h1>
     <div>
       <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
       <select id="user-select" required>
@@ -41,7 +28,23 @@
     <div>
       <button id="limpar" class="limpar-btn" onclick="apagarLocalStorage()">Limpar lista de usuários</button>
     </div>
+    <p id="feitoPor">© 2024 Feito por Caique Silva</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" target="_blank">
+        <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;" alt="Linkedin">
+      </a>
+      <a href="https://github.com/scaique" target="_blank">
+        <img src="https://skillicons.dev/icons?i=github" style="width:22px;" alt="Github">
+      </a>
+      <a href="https://indiebluegames.blogspot.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;" alt="Blog">
+      </a>
+      <a href="https://scaique.github.io/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;" alt="Portfolio">
+      </a>
+    </div>
   </div>
+  <div id="user-container" class="container" style="display: none;"></div>
   <div class="users-container">
     <div id="user-txt">
       <span id="usersTxt">USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: </span><span id="total">0</span>

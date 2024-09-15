@@ -8,27 +8,40 @@ body {
     align-items: center;
 }
 
-header {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-header h1 {
-    margin: 0;
+.container h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
     font-size: 24px;
 }
 
-header p {
+.container p {
     margin: 0;
+    margin-top: 20px;
     font-size: 14px;
     color: #666;
 }
 
+.container p.conheca {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    text-align: start;
+}
+
 .container, .users-container {
+    margin-top: 20px;
     width: 300px;
     background-color: white;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container-video_downloader {
+    width: 300px;
+    background-color: white;
+    padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -42,6 +55,31 @@ input[type="text"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.conheca-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 1px;
+    background-color: #9f9f9f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 75%;
+    text-decoration: none;
+}
+
+.conheca-btn img {
+    width: 6.5%;
+    margin-right: 10px;
+}
+
+.conheca-btn:hover {
+    background-color: #0063cd;
 }
 
 .busca-btn {
@@ -73,11 +111,6 @@ input[type="text"] {
 
 .limpar-btn:hover {
     background-color: #a82334;
-}
-
-.container div:last-child {
-    display: flex;
-    justify-content: space-between;
 }
 
 .user-info {
@@ -161,5 +194,14 @@ input[type="text"] {
 
 .links a {
     text-decoration: none;
-    padding: 5px;
+    padding: 0;
+    padding: 0 10px 0 10px;
+}
+
+.links a img {
+    filter: grayscale(100%);
+}
+
+.links a img:hover {
+    filter: grayscale(0%);
 }

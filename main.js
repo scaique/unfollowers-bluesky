@@ -72,6 +72,13 @@ function mostrarUnfollowers(dados) {
     document.getElementById("users").innerHTML = html;
 }
 
+function mostrarUser() {
+    let html = "";
+    let user = document.getElementById("user").value;
+
+    document.getElementById("user-container").innerHTML = html;
+}
+
 function carregando(valor) {
     const msg = document.getElementById("mensagem");
     msg.style.display = valor ? "flex" : "none";
@@ -169,7 +176,7 @@ async function findUnfollowers(handle) {
 async function notFollowingBack() {
     const handle = document.getElementById("user-select").value;
 
-    if (handle === "selecione") {
+    if (handle === "") {
         alert("Por favor, selecione um usuário.");
         return;
     }
@@ -193,7 +200,7 @@ async function buscarUsers() {
     }
 
     try {
-        const retorno = await fetch(`https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=${query}`);
+        const retorno = await fetch(`https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=${query}&limit=100`);
 
         if (!retorno.ok) {
             throw new Error("Erro ao buscar usuários");
@@ -214,6 +221,5 @@ async function buscarUsers() {
         });
     } catch (erro) {
         alert(`Erro: ${erro.message}`);
-
     }
 }
