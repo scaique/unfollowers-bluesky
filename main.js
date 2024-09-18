@@ -52,12 +52,13 @@ function mostrarUnfollowers(dados) {
     let html = "";
     if (dados && dados.length > 0) {
         document.getElementById("total").innerHTML = dados.length;
+        document.getElementById("unfollowers").style.display = "inline-block";
         dados.forEach(user => {
             html += `
-            <a target="_blank" href="https://bsky.app/profile/${user.handle}" style="text-decoration: none">
-                <div class="user-info">
+            <a target="_blank" href="https://bsky.app/profile/${user.handle}" class="no-underline">
+                <div class="flex items-center p-2.5 border-b border-gray-300 bg-white text-black text-left transition-colors duration-300 ease-in-out hover:bg-gray-200">
                     <div>
-                        <img src="${user.avatar}" width="50" height="50">
+                        <img src="${user.avatar}" class="w-12 h-12 rounded-full mr-3">
                     </div>
                     <div>
                         ${user.displayName || "Sem nome de perfil"} <br>
@@ -72,17 +73,50 @@ function mostrarUnfollowers(dados) {
     document.getElementById("users").innerHTML = html;
 }
 
-function mostrarUser() {
+function mostrarUser(dados) {
     let html = "";
-    let user = document.getElementById("user").value;
+    const userContainer = document.getElementById("user-container");    
+    const { avatar, displayName, handle } = dados;
+    html += `
+    <p class="pb-1 text-start text-sm font-medium text-black">Usuário selecionado:</p>
+    <a target="_blank" href="https://bsky.app/profile/${handle}" class="no-underline">
+        <div class="flex items-center p-2.5 border-b border-gray-300 bg-white text-black text-left transition-colors duration-300 ease-in-out hover:bg-gray-200">
+            <div>
+                <img src="${avatar}" class="w-12 h-12 rounded-full mr-3">
+            </div>
+            <div>
+                ${displayName || "Sem nome de perfil"} <br>
+                @${handle || "Sem nome de usuário"}
+            </div>
+        </div>
+    </a>`;
 
-    document.getElementById("user-container").innerHTML = html;
+    userContainer.innerHTML = html;
+    userContainer.style.display = "inline-block";
 }
 
 function carregando(valor) {
     const msg = document.getElementById("mensagem");
     msg.style.display = valor ? "flex" : "none";
     return valor === "";
+}
+
+async function getProfile(handle) {
+    try {
+        let url = `https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${handle}`;
+        let dados = await fetch(url);
+
+        if (!dados.ok) {
+            console.error("Erro ao recuperar perfil.");
+            return null;
+        }
+
+        let data = await dados.json();
+        return { avatar: data.avatar, displayName: data.displayName, handle: data.handle };
+    } catch (erro) {
+        console.error("Erro ao recuperar perfil:", erro);
+        return null;
+    }
 }
 
 async function getFollowers(user) {
@@ -186,6 +220,9 @@ async function notFollowingBack() {
     const data = await findUnfollowers(handle);
     mostrarUnfollowers(data.unfollowers);
     document.getElementById("mensagem").style.display = "none";
+
+    const dadosUser = await getProfile(handle);
+    mostrarUser(dadosUser);
 
     salvarUser(document.getElementById("user-select").value)
 }

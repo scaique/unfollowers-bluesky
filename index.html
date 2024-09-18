@@ -4,62 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Unfollowers for Bluesky</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://docs.bsky.app/img/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
-    <p class="conheca">Conheça também:</p>
-    <a class="conheca-btn" target="_blank" href = 'https://bit.ly/video-bsky';><img src="https://docs.bsky.app/img/favicon.png" alt="Bluesky">Video Downloader for Bluesky</a>
+<body class="font-sans bg-gray-100 m-0 p-0 flex flex-col items-center">
+  <!-- Container Video Downloader -->
+  <div class="mt-5 w-96 p-5 bg-white rounded-lg shadow-md">
+    <p class="pb-1 text-start text-sm font-medium text-gray-500">Conheça também:</p>
+    <a class="flex items-center justify-center w-full px-2.5 py-1.5 bg-gray-500 text-white font-medium rounded-md text-xs transition-colors hover:bg-blue-600" target="_blank" href = 'https://bit.ly/video-bsky';><img class="w-1/12 mr-2" src="https://docs.bsky.app/img/favicon.png" alt="Bluesky">Video Downloader for Bluesky</a>
   </div>
-  <div class="container">
-    <h1>Unfollowers for Bluesky</h1>
+
+  <!-- Container Principal -->
+  <div class="mt-5 w-96 p-5 bg-white rounded-lg shadow-md text-center">
+    <h1 class="mt-0 mb-4 text-2xl font-bold">Unfollowers for Bluesky</h1>
     <div>
-      <input type="text" id="user" placeholder="Insira seu nome de usuário." required>
-      <select id="user-select" required>
+      <input class="w-full p-1 mb-1.5 border-solid border border-gray-300 rounded box-border text-sm" type="text" id="user" placeholder="Insira seu nome de usuário." required>
+      <select id="user-select" class="text-sm w-full p-1 mt-2 mb-2 border border-gray-300 rounded bg-gray-100 text-gray-700 cursor-pointer focus:border-blue-500 focus:shadow focus:shadow-blue-500/50" required>
         <option value="" selected>Selecione seu usuário</option>
       </select>
-      <span id="texto" style="font-size: 80%; color: rgb(152, 152, 152);">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
+      <span class="text-sm text-gray-400">Seu usuário será salvo na lista acima, não será necessário digitá-lo novamente na próxima vez.</span>
     </div>
     <div>
-      <button style="width: 100%;" id="buscarUser" class="busca-btn" onclick="buscarUsers()">Buscar seu usuário</button>
-      <button style="width: 49%; display: none;" id="buscarUnf" class="busca-btn" onclick="notFollowingBack()">Buscar não seguidores</button>
+      <button style="width: 100%;" id="buscarUser" class="busca-btn p-2 bg-blue-600 text-white rounded-md text-xs font-medium mt-4 transition-colors hover:bg-blue-700" onclick="buscarUsers()">Buscar seu usuário</button>
+      <button style="width: 49%; display: none;" id="buscarUnf" class="p-2 bg-blue-600 text-white rounded-md text-xs font-medium mt-4 transition-colors hover:bg-blue-700" onclick="notFollowingBack()">Buscar não seguidores</button>
     </div>
     <div>
-      <button id="limpar" class="limpar-btn" onclick="apagarLocalStorage()">Limpar lista de usuários</button>
+      <button id="limpar" class="w-full p-1.5 bg-red-600 text-white rounded-md text-xs font-medium mt-3 transition-colors hover:bg-red-700" onclick="apagarLocalStorage()">Limpar lista de usuários</button>
     </div>
-    <p id="feitoPor">© 2024 Feito por Caique Silva</p>
-    <div class="links">
-      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" target="_blank">
-        <img src="https://skillicons.dev/icons?i=linkedin" style="width:22px;" alt="Linkedin">
+    <p class="mt-4 text-sm text-gray-400">© 2024 Feito por Caique Silva</p>
+    <div class="flex justify-center mt-0">
+      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" target="_blank" class="px-2">
+        <img src="https://skillicons.dev/icons?i=linkedin" class="w-6" alt="Linkedin">
       </a>
-      <a href="https://github.com/scaique" target="_blank">
-        <img src="https://skillicons.dev/icons?i=github" style="width:22px;" alt="Github">
+      <a href="https://github.com/scaique" target="_blank" class="px-2">
+        <img src="https://skillicons.dev/icons?i=github" class="w-6" alt="Github">
       </a>
-      <a href="https://indiebluegames.blogspot.com/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" style="width:22px;" alt="Blog">
+      <a href="https://indiebluegames.blogspot.com/" target="_blank" class="px-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" class="w-6" alt="Blog">
       </a>
-      <a href="https://scaique.github.io/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" style="width:22px;" alt="Portfolio">
+      <a href="https://scaique.github.io/" target="_blank" class="px-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" class="w-6" alt="Portfolio">
       </a>
-    </div>
-  </div>
-  <div id="user-container" class="container" style="display: none;"></div>
-  <div class="users-container">
-    <div id="user-txt">
-      <span id="usersTxt">USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: </span><span id="total">0</span>
-    </div>
-    <div id="users"></div>
-  </div>
-
-  <div id="mensagem" style="display: none;">
-    <div id="carregando">
-      <span id="avisoCarregando">Carregando...</span> <br>
-      <span id="msgCarregando" style="font-size: 65%; color: rgb(152, 152, 152);">Isso pode levar um tempo</span>
     </div>
   </div>
 
-  <a href="https://github.com/scaique/unfollowers-bluesky/blob/develop/README.md#como-funciona" target="_blank" class="fixed-button">Como Usar</a>
+  <!-- Container User -->
+  <div id="user-container" class="mt-5 w-96 p-5 bg-white rounded-lg shadow-md" style="display: none;"></div>
+
+  <!-- Container Unfollowers -->
+  <div id="unfollowers" class="mt-5 w-96 p-5 bg-white rounded-lg shadow-md text-center" style="display: none;">
+    <div class="text-sm font-bold">
+      <span>USUÁRIOS QUE NÃO TE SEGUEM DE VOLTA: </span><span id="total">0</span>
+    </div>
+    <div id="users" class="mt-2"></div>
+  </div>
+
+  <!-- Container Carregando -->
+  <div id="mensagem" class="fixed inset-0 w-full h-full flex justify-center items-center" style="display: none; background: rgba(255, 255, 255, 0.8);">
+    <div id="carregando" class="p-3 px-5 bg-white rounded shadow-md text-center">
+      <span id="avisoCarregando" class="text-black">Carregando...</span> <br>
+      <span id="msgCarregando" class="text-xs text-gray-500">Isso pode levar um tempo.</span>
+    </div>
+  </div>
+
+  <a href="https://github.com/scaique/unfollowers-bluesky/blob/develop/README.md#como-funciona" target="_blank" class="fixed bottom-3 right-3 bg-blue-600 text-white p-2 px-5 rounded-full text-md shadow-lg transition-colors hover:bg-blue-700"">Como Usar</a>
 
   <script src="main.js"></script>
 </body>
