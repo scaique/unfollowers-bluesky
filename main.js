@@ -217,12 +217,12 @@ async function notFollowingBack() {
 
     if (carregando(handle)) return;
     
+    const dadosUser = await getProfile(handle);
+    mostrarUser(dadosUser);
+    
     const data = await findUnfollowers(handle);
     mostrarUnfollowers(data.unfollowers);
     document.getElementById("mensagem").style.display = "none";
-
-    const dadosUser = await getProfile(handle);
-    mostrarUser(dadosUser);
 
     salvarUser(document.getElementById("user-select").value)
 }
