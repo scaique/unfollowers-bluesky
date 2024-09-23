@@ -61,11 +61,16 @@
 
   <!-- Container Carregando -->
   <div id="mensagem" class="fixed inset-0 w-full h-full flex justify-center items-center" style="display: none; background: rgba(255, 255, 255, 0.8);">
-    <div id="carregando" class="p-3 px-5 bg-white rounded shadow-md text-center">
-      <span id="avisoCarregando" class="text-black">Carregando...</span> <br>
-      <span id="msgCarregando" class="text-xs text-gray-500">Isso pode levar um tempo.</span>
+    <div class="p-3 px-5 bg-white rounded shadow-md text-center">
+      <div class="flex items-center justify-center">
+        <span id="avisoCarregando" class="text-black mr-3">Carregando...</span>
+        <img src="https://static-00.iconduck.com/assets.00/connection-loading-icon-2048x2048-cey8tjfo.png" class="animate-spin h-5 w-5">
+      </div>
+      <span id="msgCarregando" class="text-xs text-gray-500 mt-2">(Isso pode levar um tempo.)</span>
     </div>
   </div>
+
+
 
   <a href="https://github.com/scaique/unfollowers-bluesky/blob/develop/README.md#como-funciona" target="_blank" class="fixed bottom-3 right-3 bg-blue-600 text-white p-2 px-5 rounded-full text-md shadow-lg transition-colors hover:bg-blue-700"">Como Usar</a>
 
