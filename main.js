@@ -58,7 +58,7 @@ function mostrarUnfollowers(dados) {
             <a target="_blank" href="https://bsky.app/profile/${user.handle}" class="no-underline">
                 <div class="flex items-center p-2.5 border-b border-gray-300 bg-white text-black text-left transition-colors duration-300 ease-in-out hover:bg-gray-200">
                     <div>
-                        <img src="${user.avatar}" class="w-12 h-12 rounded-full mr-3">
+                        <img src="${user.avatar}" class="w-12 h-12 rounded-full mr-3" alt="Avatar do usuário selecionado">
                     </div>
                     <div>
                         ${user.displayName || "Sem nome de perfil"} <br>
@@ -82,7 +82,7 @@ function mostrarUser(dados) {
     <a target="_blank" href="https://bsky.app/profile/${handle}" class="no-underline">
         <div class="flex items-center p-2.5 border-b border-gray-300 bg-white text-black text-left transition-colors duration-300 ease-in-out hover:bg-gray-200">
             <div>
-                <img src="${avatar}" class="w-12 h-12 rounded-full mr-3">
+                <img src="${avatar}" class="w-12 h-12 rounded-full mr-3" alt="Avatar do usuário que não segue de volta">
             </div>
             <div>
                 ${displayName || "Sem nome de perfil"} <br>
@@ -218,10 +218,11 @@ async function notFollowingBack() {
     if (carregando(handle)) return;
     
     const dadosUser = await getProfile(handle);
-    mostrarUser(dadosUser);
-    
     const data = await findUnfollowers(handle);
+    
+    mostrarUser(dadosUser);
     mostrarUnfollowers(data.unfollowers);
+    
     document.getElementById("mensagem").style.display = "none";
 
     salvarUser(document.getElementById("user-select").value)
