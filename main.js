@@ -101,6 +101,19 @@ function carregando(valor) {
     return valor === "";
 }
 
+function mostrarComoUsar() {
+    const comoUsar = document.getElementById("como-usar");
+    const button = document.getElementById("como-usar-btn");
+
+    if(comoUsar.style.display === "none") {
+        comoUsar.style.display = "flex";
+        button.innerText = "Fechar";
+    } else {
+        comoUsar.style.display = "none";
+        button.innerText = "Como Usar";
+    }
+}
+
 async function getProfile(handle) {
     try {
         let url = `https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${handle}`;

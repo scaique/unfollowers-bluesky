@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Visualize os não-seguidores da rede socila Bluesky com mais facilidade.">
+    <meta name="keywords" content="Bluesky, Unfollowers, Seguidores, SDV, Não Segue de Volta, bsky">
+    <meta name="author" content="Caique Silva">
+
+    <meta property="og:title" content="Unfollowers for Bluesky">
+    <meta property="og:description" content="Visualize os não-seguidores da rede socila Bluesky com mais facilidade.">
+    <meta property="og:image" content="https://docs.bsky.app/img/favicon.png">
+    <meta property="og:url" content="https://scaique.tech/unfollowers-bluesky">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" href="" type="image/png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css">
+    
     <title>Unfollowers for Bluesky</title>
-    <link rel="icon" href="https://docs.bsky.app/img/favicon.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="font-sans bg-gray-100 m-0 p-0 flex flex-col items-center">
   <!-- Container Video Downloader -->
@@ -33,17 +46,17 @@
     </div>
     <p class="mt-4 text-sm text-gray-400">© 2024 Feito por Caique Silva</p>
     <div class="flex justify-center mt-0">
-      <a href="https://www.linkedin.com/in/sergio-caique-da-silva/" target="_blank" class="px-2">
-        <img src="https://skillicons.dev/icons?i=linkedin" class="w-6" alt="Icone da rede social: Linkedin">
+      <a href="https://www.linkedin.com/in/sergio-caique-da-silva" target="_blank" class="px-2 text-gray-500 hover:text-gray-900">
+        <i class="fab fa-linkedin fa-xl"></i>
       </a>
-      <a href="https://github.com/scaique" target="_blank" class="px-2">
-        <img src="https://skillicons.dev/icons?i=github" class="w-6" alt="Icone da plataforma de hospedagem de código-fonte e arquivos com controle de versão: GitHub">
+      <a href="https://github.com/scaique" target="_blank" class="px-2 text-gray-500 hover:text-gray-900">
+        <i class="fab fa-github fa-xl"></i>
       </a>
-      <a href="https://indiebluegames.blogspot.com/" target="_blank" class="px-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/4494/4494538.png" class="w-6" alt="Icone da plataforma de criação de blogs: Blogger">
+      <a href="https://indiebluegames.blogspot.com" target="_blank" class="px-2 text-gray-500 hover:text-gray-900">
+        <i class="fab fa-blogger fa-xl"></i>
       </a>
-      <a href="https://scaique.github.io/" target="_blank" class="px-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/8633/8633238.png" class="w-6" alt="Icone de internet: Portfolio">
+      <a href="https://scaique.github.io" target="_blank" class="px-2 text-gray-500 hover:text-gray-900">
+        <i class="fab fa-solid fa-globe fa-xl"></i>
       </a>
     </div>
   </div>
@@ -70,9 +83,20 @@
     </div>
   </div>
 
+  <div id="como-usar" class="fixed inset-0 w-full h-full flex justify-center items-center" style="display: none; background: rgba(255, 255, 255, 0.8);">
+    <div class="p-5 bg-gray-200 rounded-lg shadow-xl w-11/12">
+      <h1 class="text-2xl font-bold text-start mb-4">Como Usar</h1>
+      <ol class="list-decimal pl-6 space-y-4 text-sm">
+        <li><strong>Pesquisa do usuário:</strong> Insera o nome de um perfil da Bluesky na barra de pesquisa e clique em Buscar Usuário.</li>
+        <li><strong>Seleção do perfil:</strong> A aplicação apresenta uma lista de sugestões com base na pesquisa. Selecione o perfil desejado para continuar.</li>
+        <li><strong>Processamento dos dados:</strong> Após a seleção, clique em Buscar Não Seguidores para a aplicação fazer a busca dos unfollowers.</li>
+        <li><strong>Exibição dos resultados:</strong> A lista de "unfollowers" é exibida e cada perfil exibido é acompanhado de um link direto para sua página no site ou aplicativo da Bluesky, facilitando o acesso rápido ao perfil desejado.</li>
+        <li><strong>Limpar a pesquisa:</strong> Ao final, você pode optar por limpar a lista de resultados e realizar uma nova busca, mantendo o fluxo de navegação simples e eficiente.</li>
+      </ol>
+    </div>
+</div>
 
-
-  <a href="https://github.com/scaique/unfollowers-bluesky/blob/develop/README.md#como-funciona" target="_blank" class="fixed bottom-3 right-3 bg-blue-600 text-white p-2 px-5 rounded-full text-md shadow-lg transition-colors hover:bg-blue-700"">Como Usar</a>
+  <a id="como-usar-btn" onclick="mostrarComoUsar()" class="fixed cursor-pointer bottom-3 right-3 bg-blue-600 text-white p-2 px-5 rounded-full text-md shadow-lg transition-colors hover:bg-blue-700">Como Usar</a>
 
   <script src="main.js"></script>
 </body>
