@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(?!.*\.(js|css|html|jpg|png|gif|ico|map|ttf|woff|woff2|eot|svg|mp4|json|pdf|xml|txt|csv|zip|rar|tar|gz|tar.gz|jar|tar.xz|7z|bmp)$) /index.html [L]
